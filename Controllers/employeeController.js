@@ -57,7 +57,6 @@ exports.editEmployeeController = async (req, res) => {
         const updatedEmployee = await employees.findByIdAndUpdate({ _id: id }, { name, email, position, department, salary }, { new: true })
         await updatedEmployee.save()
         res.status(200).json(updatedEmployee)
-        console.log(updatedEmployee);
 
     }
     catch (err) {
