@@ -28,9 +28,10 @@ exports.addEmployeeController = async (req,res) =>{
 
 exports.getAllEmployeesController = async (req,res) =>{
     console.log("Inside getAllEmployeesController");
+    const {search}= req.query
 
     try{
-        const allEmployees = await employees.find()
+        const allEmployees = await employees.find({name:{$regex:search,$options:"i"}})
         res.status(200).json(allEmployees)
         console.log(allEmployees);
         
